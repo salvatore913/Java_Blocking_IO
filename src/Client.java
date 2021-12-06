@@ -16,7 +16,7 @@ public class Client {
                 numberN = scanner.nextLine();
                 out.println(numberN);
                 if ("end".equals(numberN)) break;
-                System.out.println("SERVER: " + in.readLine());
+                System.out.println("Получен результат вычислений: " + in.readLine());
             }
         } catch (IOException ex) {
             ex.printStackTrace(System.out);

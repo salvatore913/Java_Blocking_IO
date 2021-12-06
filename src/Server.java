@@ -6,8 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    public static void main(String[] args) {
-        try (ServerSocket servSocket = new ServerSocket(23444)) {
+    public static void main(String[] args) throws IOException {
+        ServerSocket servSocket = new ServerSocket(23444);
             while (true) {
                 try (Socket socket = servSocket.accept();
                      PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -21,9 +21,9 @@ public class Server {
                         } else
                             numberN = Long.parseLong(line);
                         if (numberN == 0) {
-                            out.println(numberN + "-ное число Фибоначчи равно 0");
+                            out.println(numberN + "-е число Фибоначчи равно 0");
                         } else if (numberN == 1) {
-                            out.println(numberN + "-ное число Фибоначчи равно 1");
+                            out.println(numberN + "-е число Фибоначчи равно 1");
                         } else {
                             long a = 0;
                             long b = 1;
@@ -32,15 +32,12 @@ public class Server {
                                 a = b;
                                 b = next;
                             }
-                            out.println(numberN + "-ное число Фибоначчи равно " + b);
+                            out.println(numberN + "-е число Фибоначчи равно " + b);
                         }
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace(System.out);
                 }
             }
-        } catch (IOException ex) {
-            ex.printStackTrace(System.out);
-        }
     }
 }
